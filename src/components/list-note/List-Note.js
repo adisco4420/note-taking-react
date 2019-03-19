@@ -7,12 +7,16 @@ class ListNotes extends Component {
     editNote = (note, index) => {
         this.setState({editTitle: note.title, editDesc: note.desc, editId: index})
     }
-    deleteNote = (note) => {
+    deleteNote = (note, index) => {
         let listNote = this.state.listAllNote
         const id = note.id;
-        const updateNote = listNote.filter(note => note.id !== id)
-        localStorage.setItem('list-note', JSON.stringify(updateNote))
-        this.setState({listAllNote: updateNote})
+        listNote.splice(index, 1)
+        // console.log(listNote)
+
+        // const updateNote = listNote.splice(index, 1)
+        // const updateNote = listNote.filter(note => note.id !== id)
+        localStorage.setItem('list-note', JSON.stringify(listNote))
+        this.setState({listAllNote: listNote})
     }
     updateList = (item) => {
         this.setState({listAllNote: item})
@@ -65,7 +69,7 @@ class ListNotes extends Component {
                         <h5 className="card-title">{item.title}</h5> 
                         <p>{item.desc}</p>     
                         <i  data-toggle="modal" onClick={() => {this.editNote(item,index)}} data-target="#editModal"className="fa fa-edit mr-3 text-info"></i>
-                        <i onClick={() => this.deleteNote(item)} className="fa fa-trash  text-danger" ></i>
+                        <i onClick={() => this.deleteNote(item, index)} className="fa fa-trash  text-danger" ></i>
                         </div>
                     </div>
                     </div>
