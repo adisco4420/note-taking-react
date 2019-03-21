@@ -55,12 +55,12 @@ class ListNotes extends Component {
                <div className="row">
              
                 { this.state.listAllNote === null || !this.state.listAllNote.length ? 
-               <div className="" style={{marginLeft: '40%'}}>
+               <div className="" style={{marginLeft: '35%'}}>
                    <i className="text-center fa fa-sticky-note-o fa-5x"></i>
                     <h5 className="text-center ">No Note Available</h5>
                </div> :
                     this.state.listAllNote.map((item, index) => {
-                        return <div key={index} className="col-3 mb-3">
+                        return <div key={index} className="col-md-3 mb-3">
                         <div className="card">
                         <div className="card-body bg-success">
                             <span className=" fa fa-sticky-note fa-5x text-light mt-2"></span>
